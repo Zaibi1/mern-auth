@@ -31,10 +31,10 @@ export const signIn = async (req, res, next) => {
     // Return jsonwebtoken
     const token = jwt.sign({ userId: validUser._id }, process.env.JWT_SECRET);
     const { password: hashedPassword, ...rest } = validUser._doc;
-    const expiryDate = new Date(Date.now + 3600000);
+    const expiryDate = new Date(Date.now() + 3600000);
 
     res
-      .cookie("access_token", token, { httpOnly: true })
+      .cookie("access_token", token, { httpOnly: true, expires: expiryDate })
       .status(200)
       .json(rest);
   } catch (error) {
