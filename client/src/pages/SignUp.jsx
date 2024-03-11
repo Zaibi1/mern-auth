@@ -16,7 +16,7 @@ export default function SignUp() {
     try {
       setLoading(true);
       setError(false);
-      const response = await fetch("/api/auth/signin", {
+      const response = await fetch("/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -73,7 +73,7 @@ export default function SignUp() {
           </Link>
         </div>
         <p className="text-red-700 pt-3">
-          {error && "Something went wrong!  Try again."}
+          {error && "Something went wrong! Try again."}
         </p>
       </div>
     </>
